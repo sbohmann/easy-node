@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-const bcrypt = require('bcrypt')
 const implementation = require('../implementation/core.js')
 
 let delayForUserName = new Map()
@@ -30,8 +29,12 @@ router.post('/', function (req, res) {
         res.set('Location', '/login')
         res.send()
     }
+    let loginDelay = delayForUserName.get(userName)
+    if (loginDelay > 0) {
+        console.log(`Applying login delay of ${loginDelay} seconds for user ${userName}`)
+    }
     setTimeout(login,
-        1000 * delayForUserName.get(userName),
+        1000 * loginDelay,
         userName,
         req.body.password,
         success,
