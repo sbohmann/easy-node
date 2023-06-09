@@ -2,7 +2,7 @@ const crypto = require("crypto");
 
 exports.configuration = {
     get sessionSecret() {
-        // TODO Provide a custom secret for express-session if required
+        // Provide a custom secret for express-session if required
         // In case sessions are preserved across restarts,
         // store and / or reuse this secret.
         // TODO (library) document / link how to retain sessions with express-session
@@ -12,7 +12,7 @@ exports.configuration = {
 }
 
 exports.login = function(userName, password) {
-    // TODO implement actual login
+    // TODO (project) implement actual login
     if (userName === "example_user" && password === 'example_password') {
         // returning example user ID for successful login
         return 1
