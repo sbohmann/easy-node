@@ -1,12 +1,12 @@
 extends layout
 
 block content
-    div(id='content')
-        div#title
-            h1 Login
-            a(href="/")
-                img(src="/images/icon.png" width=32 height=32)
+    div
+        //TODO ideally,
         form(action="/login" method="POST")
-            input(name="user" type="text" placeholder="username" class="login-text-field" autocomplete="username")
-            input(name="password" type="password" placeholder="password" class="login-text-field" autocomplete="current-password")
-            input(type="submit" value="login" class="login-button")
+            p
+                input(name="user" type="text" placeholder="username" class="login-text-field" autocomplete="username")
+            p
+                input(name="password" type="password" placeholder="password" class="login-text-field" autocomplete="current-password")
+            p
+                input(type="submit" value="login" class="login-button")

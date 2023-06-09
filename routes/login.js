@@ -49,7 +49,7 @@ function login(userName, password, success, failure) {
 }
 
 function loginWithUserId(userId, password, success, failure) {
-    let user = storage.userForId.get(userId)
+    let user = implementation.userForId(userId)
     if (user === undefined) {
         console.log("Unknown user ID [" + userId + "]")
         failure()
