@@ -39,30 +39,12 @@ router.post('/', function (req, res) {
 })
 
 function login(userName, password, success, failure) {
-    let userId = implementation.userIdForName(userName)
+    let userId = implementation.login(userName, password)
     if (userId === undefined) {
-        console.log("Unknown user name [" + userName + "]")
+        console.log("Login failed for user [" + userName + "]")
         failure()
     } else {
-        loginWithUserId(userId, password, success, failure)
-    }
-}
-
-function loginWithUserId(userId, password, success, failure) {
-    let user = implementation.userForId(userId)
-    if (user === undefined) {
-        console.log("Unknown user ID [" + userId + "]")
-        failure()
-    } else if (user.salt === undefined || user.hash === undefined) {
-        console.log("No password configured for user [" + userId + "]")
-        failure()
-    } else {
-        let calculatedHash = bcrypt.hashSync(password, user.salt)
-        if (calculatedHash === user.hash) {
-            success(userId)
-        } else {
-            failure()
-        }
+        success(userId)
     }
 }
 

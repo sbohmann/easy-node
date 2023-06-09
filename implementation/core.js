@@ -11,17 +11,10 @@ exports.configuration = {
     }
 }
 
-exports.userIdForName = function(userName) {
-    // TODO implement
-    if (userName === "example_user") {
+exports.login = function(userName, password) {
+    // TODO implement actual login
+    if (userName === "example_user" && password === 'example_password') {
+        // returning example user ID for successful login
         return 1
-    }
-}
-
-exports.userForId = function(userId) {
-    if (userId === 1) {
-        return {
-
-        }
     }
 }
